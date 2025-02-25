@@ -1,0 +1,27 @@
+.main-container{
+    width: 94%;
+    margin: auto;
+    height: 100vh;
+    padding: 10px;
+}
+.header-container{
+    margin-top: 0px;
+    width: 100%;
+    height: fit-content;
+    border:2px black solid;
+    display: flex;
+}
+.nav-container button{
+    display: block;
+    width: 90%;
+    margin:auto;
+}
+.nav-container{
+    margin: 10px;
+    width: fit-content;
+    height: fit-content;
+    border: 1px black solid;
+}
+.nav-container li{
+    list-style:none;
+}
