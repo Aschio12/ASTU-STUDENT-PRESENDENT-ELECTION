@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./candidates.css";
 import asch from "../assets/360_F_573881698_hwhzbRGAXwdDqhzWR9BbOMb5A6dcLk2r.jpg";
 import chala from "../assets/download.jpg";
@@ -6,7 +7,8 @@ import meri from "../assets/istockphoto-468822682-612x612.jpg";
 import vandam from "../assets/istockphoto-510105633-612x612.jpg";
 import tomi from "../assets/istockphoto-1270851149-612x612.jpg";
 import Candidate_card from "./candidate_cards";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Candidate() {
   const initialCandidates = [
@@ -20,21 +22,28 @@ export default function Candidate() {
 
   const [candidates, setCandidates] = useState(initialCandidates);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
-  // Handle search and swap (used for both button and Enter key)
+  
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (!user) {
+      navigate("/signup"); 
+    }
+  }, [navigate]);
+
   const handleSearch = () => {
     const foundIndex = candidates.findIndex(
       (candidate) => candidate.name.toLowerCase() === searchTerm.toLowerCase()
     );
-    if (foundIndex > 0) { // If found and not already first
+    if (foundIndex > 0) {
       const newCandidates = [...candidates];
       [newCandidates[0], newCandidates[foundIndex]] = [newCandidates[foundIndex], newCandidates[0]];
       setCandidates(newCandidates);
     }
-    setSearchTerm(""); // Clear input
+    setSearchTerm("");
   };
 
-  // Handle Enter key press
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       handleSearch();
@@ -49,7 +58,7 @@ export default function Candidate() {
           placeholder="Search candidates..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          onKeyDown={handleKeyDown} // Trigger search on Enter
+          onKeyDown={handleKeyDown}
         />
         <button onClick={handleSearch}>
           <b>SEARCH</b>
@@ -59,6 +68,12 @@ export default function Candidate() {
         {candidates.map((obj) => (
           <Candidate_card key={obj.id} student={obj} />
         ))}
+      </div>
+      <div className="overview">
+        <h2>overview</h2>
+        <p>Total candidates</p>
+        <p>Total Votes</p>
+        <p>Day left</p>
       </div>
     </div>
   );

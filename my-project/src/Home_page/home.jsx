@@ -1,21 +1,34 @@
-import React,{useState} from "react";
+import React,{use, useState} from "react";
+import { Link } from "react-router-dom";
 import Candiddate from "./candidates";
 import "./home.css";
 export default function Home() {
     const[name,setName]=useState();
+    const[dropdown,setDropdown]=useState(false);
+    const togle=()=>{
+      setDropdown(!dropdown);
+    }
+    const handleOutsideClick = (e) => {
+      if (e.target.tagName !== "BUTTON") { 
+        setIsOpen(false);
+      }
+    };
+  
+    document.addEventListener("click", handleOutsideClick);
+  
   return (
     <div className="main-container">
       <div className="header-container">
         <div className="nav-container">
           <button>
-            <b>MENU</b>
+            <b onClick={togle}>MENU</b>
           </button>
-          <ul>
-            <li>HOME</li>
-            <li>VOTE</li>
-            <li>leader board</li>
-            <li>GUIDLINES</li>
-          </ul>
+          {dropdown &&<nav>
+            <Link to="/home"><b>HOME</b></Link>
+            <Link ><b>VOTE</b></Link>
+            <Link><b>LEADER BORD</b></Link>
+            <Link><b>GUIDLINES</b></Link>
+        </nav>}
         </div>
       </div>
       <div className="welcome">
