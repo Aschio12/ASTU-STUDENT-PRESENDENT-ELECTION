@@ -7,7 +7,6 @@ import joye from "../assets/istockphoto-175204486-612x612.jpg";
 import meri from "../assets/istockphoto-468822682-612x612.jpg";
 import vandam from "../assets/istockphoto-510105633-612x612.jpg";
 import tomi from "../assets/istockphoto-1270851149-612x612.jpg";
-import Candidate_card from "./candidate_cards";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

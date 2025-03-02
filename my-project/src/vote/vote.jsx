@@ -5,7 +5,7 @@ import joye from "../assets/istockphoto-175204486-612x612.jpg";
 import meri from "../assets/istockphoto-468822682-612x612.jpg";
 import vandam from "../assets/istockphoto-510105633-612x612.jpg";
 import tomi from "../assets/istockphoto-1270851149-612x612.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Added useEffect
 import logoo from "../assets/images.png";
 import Candidate_card from "./candidate_cards";
 import "./vote.css";
@@ -22,8 +22,30 @@ export default function Vote() {
     { id: 6, name: "tomi", image: tomi, votes: {} },
   ];
 
-  const [candidates, setCandidates] = useState(initialCandidates);
+  // Load votes from localStorage on initial render
+  const loadVotesFromStorage = () => {
+    const storedVotes = localStorage.getItem(`votes_${currentUserId}`);
+    if (storedVotes) {
+      const parsedVotes = JSON.parse(storedVotes);
+      return initialCandidates.map((candidate) => ({
+        ...candidate,
+        votes: parsedVotes[candidate.id] || {},
+      }));
+    }
+    return initialCandidates;
+  };
+
+  const [candidates, setCandidates] = useState(loadVotesFromStorage);
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Save votes to localStorage whenever candidates change
+  useEffect(() => {
+    const votesToSave = candidates.reduce((acc, candidate) => {
+      acc[candidate.id] = candidate.votes;
+      return acc;
+    }, {});
+    localStorage.setItem(`votes_${currentUserId}`, JSON.stringify(votesToSave));
+  }, [candidates, currentUserId]);
 
   const handleSearch = () => {
     const foundIndex = candidates.findIndex(
@@ -51,7 +73,7 @@ export default function Vote() {
       prevCandidates.map((candidate) => {
         const updatedVotes = { ...candidate.votes };
 
-        // Remove the user's vote from this candidate if it exists (for all candidates)
+        // Remove the user's vote from this candidate if it exists
         if (updatedVotes[currentUserId]) {
           delete updatedVotes[currentUserId];
         }

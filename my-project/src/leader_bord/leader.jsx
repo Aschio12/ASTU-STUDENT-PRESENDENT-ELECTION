@@ -1,10 +1,8 @@
 import logoo from "../assets/images.png";
 import React, { use, useState } from "react";
 import { Link } from "react-router-dom";
-import Candiddate from "./candidates";
 import "./leader.css";
-
-export default function Leader() {
+export default function Home() {
   const [name, setName] = useState();
   const [dropdown, setDropdown] = useState(false);
   const togle = () => {
@@ -33,7 +31,7 @@ export default function Leader() {
               <Link to="/vote">
                 <b>VOTE</b>
               </Link>
-              <Link to="/leaders">
+              <Link to="leader">
                 <b>LEADER BORD</b>
               </Link>
               <Link>
@@ -47,15 +45,4 @@ export default function Leader() {
           <p>ASTU STUDENT PREDENT SELCTION</p>
         </div>
       </div>
-      <div className="welcome">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eius
-          numquam fugiat recusandae soluta ducimus aliquid distinctio neque
-          iste, sapiente obcaecati cupiditate optio blanditiis dignissimos vel
-          ex, quo libero architecto.
-        </p>
-      </div>
-      <div className="candidate-container">
-        <Candiddate />
-      </div>
-    </div>);}
+      </div>);}

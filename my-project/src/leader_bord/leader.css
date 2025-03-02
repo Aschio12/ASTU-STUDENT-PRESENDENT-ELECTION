@@ -1,62 +1,9 @@
-.main-container{
-    width: 94%;
-    margin: auto;
-    height: 100vh;
-    padding: 10px;
-}
-.header-container{
-    margin-top: 0px;
+.card-container {
     width: 100%;
-    height: fit-content;
-    border:2px black solid;
-    display: flex;
-}
-.nav-container button{
-    display: block;
-    width: fit-content;
-    margin: auto;
-    border: 3px black solid;
-}
-.nav-container{
-    margin: 10px;
-    width: fit-content;
-    display: flex;
-    gap: 10px;
-    flex-direction: row;
-    padding: 5px;
     height: auto;
-    border: 1px black solid;
-}
-.nav-container nav{
-    margin: 10px;
-    width: fit-content;
     display: flex;
-    gap: 10px;
-    flex-direction: row;
-    padding: 5px;
-    border: 1px black solid;
-    margin: auto;
-    margin-top: 10px;
-    height: auto;
-}
-.header-container .logo p{
-    color: red;
-    font-size:x-large;
-  
-  }
-.header-container .logo{
-    width: fit-content;
-    height: auto;
-    margin: auto;
-    margin-right: 15px;
-    padding: 0px;
-    border: 1px black solid;
-}
-.header-container .logo div{
-    background-size: cover;
-    background-position: center;
-    background-repeat:no-repeat;
-    border: 1px black solid;
-    width: 30%;
-    height: 100%;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
 }
