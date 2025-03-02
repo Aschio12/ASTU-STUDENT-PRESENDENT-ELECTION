@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Candidate_card from "./candidate_cards";
 import "./candidates.css";
 import asch from "../assets/360_F_573881698_hwhzbRGAXwdDqhzWR9BbOMb5A6dcLk2r.jpg";
 import chala from "../assets/download.jpg";

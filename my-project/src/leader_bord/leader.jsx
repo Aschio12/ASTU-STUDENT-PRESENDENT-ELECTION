@@ -2,10 +2,9 @@ import logoo from "../assets/images.png";
 import React, { use, useState } from "react";
 import { Link } from "react-router-dom";
 import Candiddate from "./candidates";
-import "./home.css";
-import Vote from "../vote/vote";
+import "./leader.css";
 
-export default function Home() {
+export default function Leader() {
   const [name, setName] = useState();
   const [dropdown, setDropdown] = useState(false);
   const togle = () => {
@@ -34,7 +33,7 @@ export default function Home() {
               <Link to="/vote">
                 <b>VOTE</b>
               </Link>
-              <Link>
+              <Link to="/leaders">
                 <b>LEADER BORD</b>
               </Link>
               <Link>
@@ -59,14 +58,4 @@ export default function Home() {
       <div className="candidate-container">
         <Candiddate />
       </div>
-      <div className="status">
-        <h3>
-          <b>ELECTION OVERVIEW</b>
-        </h3>
-        <p>Total Number Of Candidtes : </p>
-        <p>TOtal Number Of Votes : </p>
-        <p>Time left : </p>
-      </div>
-    </div>
-  );
-}
+    </div>);}
