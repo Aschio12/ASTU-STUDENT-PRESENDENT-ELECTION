@@ -5,10 +5,10 @@ import joye from "../assets/istockphoto-175204486-612x612.jpg";
 import meri from "../assets/istockphoto-468822682-612x612.jpg";
 import vandam from "../assets/istockphoto-510105633-612x612.jpg";
 import tomi from "../assets/istockphoto-1270851149-612x612.jpg";
-import { useState, useEffect } from "react"; // Added useEffect
+import { useState, useEffect } from "react";
 import logoo from "../assets/images.png";
 import Candidate_card from "./candidate_cards";
-import "./vote.css";
+import styles from "./vote.module.css"; // Import as module
 
 export default function Vote() {
   const currentUserId = "user123"; // Replace with your auth system’s user ID
@@ -22,7 +22,6 @@ export default function Vote() {
     { id: 6, name: "tomi", image: tomi, votes: {} },
   ];
 
-  // Load votes from localStorage on initial render
   const loadVotesFromStorage = () => {
     const storedVotes = localStorage.getItem(`votes_${currentUserId}`);
     if (storedVotes) {
@@ -38,7 +37,6 @@ export default function Vote() {
   const [candidates, setCandidates] = useState(loadVotesFromStorage);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Save votes to localStorage whenever candidates change
   useEffect(() => {
     const votesToSave = candidates.reduce((acc, candidate) => {
       acc[candidate.id] = candidate.votes;
@@ -72,60 +70,54 @@ export default function Vote() {
     setCandidates((prevCandidates) =>
       prevCandidates.map((candidate) => {
         const updatedVotes = { ...candidate.votes };
-
-        // Remove the user's vote from this candidate if it exists
         if (updatedVotes[currentUserId]) {
           delete updatedVotes[currentUserId];
         }
-
-        // Add the vote to the selected candidate
         if (candidate.id === candidateId) {
           updatedVotes[currentUserId] = 1;
         }
-
         return { ...candidate, votes: updatedVotes };
       })
     );
   };
 
-  // Calculate total votes for display
   const getTotalVotes = (votes) => Object.keys(votes).length;
 
   const [dropdown, setDropdown] = useState(false);
-  const togle = () => {
+  const toggle = () => {
     setDropdown(!dropdown);
   };
 
   return (
-    <div className="container">
-      <div className="header-container">
-        <div className="nav-container">
+    <div className={styles.container}>
+      <div className={styles.headerContainer}>
+        <div className={styles.navContainer}>
           <button>
-            <b onClick={togle}>MENU</b>
+            <b onClick={toggle}>MENU</b>
           </button>
           {dropdown && (
             <nav>
               <Link to="/home">
                 <b>HOME</b>
               </Link>
-              <Link>
+              <Link to="/vote">
                 <b>VOTE</b>
               </Link>
-              <Link>
-                <b>LEADER BORD</b>
+              <Link to="/leader">
+                <b>LEADERBOARD</b>
               </Link>
-              <Link>
-                <b>GUIDLINES</b>
+              <Link to="/guidelines">
+                <b>GUIDELINES</b>
               </Link>
             </nav>
           )}
         </div>
-        <div className="logo">
+        <div className={styles.logo}>
           <div style={{ backgroundImage: `url(${logoo})` }}>logoo</div>
           <p>ASTU STUDENT PREDENT SELCTION</p>
         </div>
       </div>
-      <div className="search-container">
+      <div className={styles.searchContainer}>
         <input
           type="text"
           placeholder="Search candidates..."
@@ -137,7 +129,7 @@ export default function Vote() {
           <b>SEARCH</b>
         </button>
       </div>
-      <div className="card-container">
+      <div className={styles.cardContainer}>
         {candidates.map((obj) => (
           <Candidate_card
             key={obj.id}

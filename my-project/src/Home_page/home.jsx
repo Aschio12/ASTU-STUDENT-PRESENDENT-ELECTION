@@ -1,30 +1,36 @@
-import logoo from "../assets/images.png";
-import React, { use, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Candiddate from "./candidates";
-import "./home.css";
-import Vote from "../vote/vote";
+import logoo from "../assets/images.png";
+import Candidate from "./candidates"; // Adjust if name differs
+import styles from "./home.module.css"; // Assuming modular CSS
 
 export default function Home() {
-  const [name, setName] = useState();
   const [dropdown, setDropdown] = useState(false);
-  const togle = () => {
-    setDropdown(!dropdown);
+
+  const toggle = () => {
+    setDropdown((prev) => !prev); // Use functional update for reliability
   };
+
   const handleOutsideClick = (e) => {
-    if (e.target.tagName !== "BUTTON") {
-      setIsOpen(false);
+    // Prevent closing if the click is on the button or its children
+    if (!e.target.closest("button")) {
+      setDropdown(false);
     }
   };
 
-  document.addEventListener("click", handleOutsideClick);
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
 
   return (
-    <div className="main-container">
-      <div className="header-container">
-        <div className="nav-container">
-          <button>
-            <b onClick={togle}>MENU</b>
+    <div className={styles.mainContainer}>
+      <div className={styles.headerContainer}>
+        <div className={styles.navContainer}>
+          <button onClick={toggle}>
+            <b>MENU</b>
           </button>
           {dropdown && (
             <nav>
@@ -34,21 +40,21 @@ export default function Home() {
               <Link to="/vote">
                 <b>VOTE</b>
               </Link>
-              <Link>
-                <b>LEADER BORD</b>
+              <Link to="/leader">
+                <b>LEADERBOARD</b>
               </Link>
-              <Link>
-                <b>GUIDLINES</b>
+              <Link to="/guidelines">
+                <b>GUIDELINES</b>
               </Link>
             </nav>
           )}
         </div>
-        <div className="logo">
-          <div style={{backgroundImage:`url(${logoo})`}}>logoo</div>
-          <p>ASTU STUDENT PREDENT SELCTION</p>
+        <div className={styles.logo}>
+          <div style={{ backgroundImage: `url(${logoo})` }}>logoo</div>
+          <p>ASTU STUDENT PRESIDENT SELECTION</p>
         </div>
       </div>
-      <div className="welcome">
+      <div className={styles.welcome}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eius
           numquam fugiat recusandae soluta ducimus aliquid distinctio neque
@@ -56,16 +62,16 @@ export default function Home() {
           ex, quo libero architecto.
         </p>
       </div>
-      <div className="candidate-container">
-        <Candiddate />
+      <div className={styles.candidateContainer}>
+        <Candidate />
       </div>
-      <div className="status">
+      <div className={styles.status}>
         <h3>
           <b>ELECTION OVERVIEW</b>
         </h3>
-        <p>Total Number Of Candidtes : </p>
-        <p>TOtal Number Of Votes : </p>
-        <p>Time left : </p>
+        <p>Total Number Of Candidates: </p>
+        <p>Total Number Of Votes: </p>
+        <p>Time left: </p>
       </div>
     </div>
   );
