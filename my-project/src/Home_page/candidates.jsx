@@ -69,12 +69,6 @@ export default function Candidate() {
           <Candidate_card key={obj.id} student={obj} />
         ))}
       </div>
-      <div className="overview">
-        <h2>overview</h2>
-        <p>Total candidates</p>
-        <p>Total Votes</p>
-        <p>Day left</p>
-      </div>
     </div>
   );
 }

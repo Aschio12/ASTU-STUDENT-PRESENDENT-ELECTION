@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoo from "../assets/images.png";
-import Candidate from "./candidates"; 
-import styles from "./home.module.css"; 
+import Candidate from "./candidates";
+import styles from "./home.module.css";
 import Footer from "../footer";
 
 export default function Home() {
   const [dropdown, setDropdown] = useState(false);
 
   const toggle = () => {
-    setDropdown((prev) => !prev); 
+    setDropdown((prev) => !prev);
   };
 
   const handleOutsideClick = (e) => {
@@ -55,11 +55,19 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.welcome}>
+        <h1>WELCOME TO ASTU STUDENT VOTING!</h1>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eius
-          numquam fugiat recusandae soluta ducimus aliquid distinctio neque
-          iste, sapiente obcaecati cupiditate optio blanditiis dignissimos vel
-          ex, quo libero architecto.
+          Welcome to the ASTU Student Voting App! This platform is designed to
+          empower every student at Adama Science and Technology University
+          (ASTU) to participate actively in shaping the future of our campus
+          community. With this app, you can cast your vote securely,
+          conveniently, and transparently in various student elections,
+          referendums, or polls. Whether it’s choosing your representatives for
+          the Student Union or deciding on key initiatives that affect campus
+          life, your voice matters. The app ensures ease of access, privacy, and
+          accuracy, making sure that each vote counts. Together, let’s build a
+          more inclusive, democratic, and vibrant university environment. Thank
+          you for being an active participant in driving positive change!
         </p>
       </div>
       <div className={styles.candidateContainer}>
@@ -73,7 +81,7 @@ export default function Home() {
         <p>Total Number Of Votes: </p>
         <p>Time left: </p>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -1,45 +1,48 @@
-.card-container {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-}
- /* Search */
- .search-Container {
-    width: 94%;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
-    border: 1px yellow solid;
 
-  }
-  
-  .search-Container input {
-    padding: 15px;
-    width: 70%;
-    border: 2px solid #2c3e50;
-    border-radius: 8px;
-    font-size: 24px;
-  }
-  
-  .search-Container button {
-    margin-right: 0px;
-    font-size: 24px;
-    width: 40%;
-    padding: 10px 15px;
-    background-color: #e74c3c;
-    border: none;
-    color: white;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-  
-  .search-Container button:hover {
-    background-color: #c0392b;
-  }
+.search-container {
+  width: 94%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 20px 0;
+
+}
+
+.search-container input {
+  padding: 7px;
+  width: 70%;
+  border: 2px solid #2c3e50;
+  border-radius: 8px;
+  font-size: 19px;
+}
+
+.search-container button {
+  margin-right: 0px;
+  font-size: 19px;
+  width: 40%;
+  padding: 7px;
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #c0392b;
+}
+
+ /* Cards */
+ .card-container {
+  width: 94%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 60px;
+  justify-content: center;
+}
+
