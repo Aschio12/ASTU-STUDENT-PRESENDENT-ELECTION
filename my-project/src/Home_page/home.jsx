@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logoo from "../assets/images.png";
-import Candidate from "./candidates"; // Adjust if name differs
-import styles from "./home.module.css"; // Assuming modular CSS
+import Candidate from "./candidates"; 
+import styles from "./home.module.css"; 
+import Footer from "../footer";
 
 export default function Home() {
   const [dropdown, setDropdown] = useState(false);
 
   const toggle = () => {
-    setDropdown((prev) => !prev); // Use functional update for reliability
+    setDropdown((prev) => !prev); 
   };
 
   const handleOutsideClick = (e) => {
-    // Prevent closing if the click is on the button or its children
     if (!e.target.closest("button")) {
       setDropdown(false);
     }
@@ -26,7 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={styles.mainContainer}>
+    <div className={styles.Container}>
       <div className={styles.headerContainer}>
         <div className={styles.navContainer}>
           <button onClick={toggle}>
@@ -50,7 +50,7 @@ export default function Home() {
           )}
         </div>
         <div className={styles.logo}>
-          <div style={{ backgroundImage: `url(${logoo})` }}>logoo</div>
+          <div style={{ backgroundImage: `url(${logoo})` }}></div>
           <p>ASTU STUDENT PRESIDENT SELECTION</p>
         </div>
       </div>
@@ -73,6 +73,7 @@ export default function Home() {
         <p>Total Number Of Votes: </p>
         <p>Time left: </p>
       </div>
+      <Footer/>
     </div>
   );
 }

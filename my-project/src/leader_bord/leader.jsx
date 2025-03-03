@@ -9,6 +9,7 @@ import vandam from "../assets/istockphoto-510105633-612x612.jpg";
 import tomi from "../assets/istockphoto-1270851149-612x612.jpg";
 import Candidate_card from "./candidate_cards";
 import styles from "./leader.module.css";
+import Footer from "../footer";
 
 export default function Leader() {
   const [dropdown, setDropdown] = useState(false);
@@ -22,11 +23,10 @@ export default function Leader() {
     { id: 6, name: "tomi", image: tomi, votes: {} },
   ];
 
-  const currentUserId = "user123"; // Replace with your auth system’s user ID
+  const currentUserId = "user123"; 
 
   const [candidates, setCandidates] = useState(initialCandidates);
 
-  // Fetch votes from localStorage and sort
   useEffect(() => {
     const storedVotes = localStorage.getItem(`votes_${currentUserId}`);
     let updatedCandidates = [...initialCandidates];
@@ -109,6 +109,7 @@ export default function Leader() {
           ))}
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -1,12 +1,47 @@
 .candidate-card {
-    width: 200px;
-    height: 250px;
+    width: 400px;
+    height: 500px;
     background-size: cover;
     background-position: center;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align text to the bottom */
     align-items: center;
-    justify-content: center;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+    line-height:0%;
+}
+
+.candidate-card p {
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.candidate-card button {
+    margin-top: 2px;
+    padding: 8px 15px;
+    background-color:orange;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.6s ease-in-out, color 0.6s ease-in-out;
+}
+
+.candidate-card:hover {
+    transform: scale(1.05);
+}
+
+.candidate-card button:hover {
+    background-color: #e48c08;
+    color: white;
 }

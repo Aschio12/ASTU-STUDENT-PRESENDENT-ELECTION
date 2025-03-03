@@ -8,10 +8,11 @@ import tomi from "../assets/istockphoto-1270851149-612x612.jpg";
 import { useState, useEffect } from "react";
 import logoo from "../assets/images.png";
 import Candidate_card from "./candidate_cards";
-import styles from "./vote.module.css"; // Import as module
+import styles from "./vote.module.css"; 
+import Footer from "../footer";
 
 export default function Vote() {
-  const currentUserId = "user123"; // Replace with your auth system’s user ID
+  const currentUserId = "user123";
 
   const initialCandidates = [
     { id: 1, name: "ASCHALEW", image: asch, votes: {} },
@@ -113,7 +114,7 @@ export default function Vote() {
           )}
         </div>
         <div className={styles.logo}>
-          <div style={{ backgroundImage: `url(${logoo})` }}>logoo</div>
+          <div style={{ backgroundImage: `url(${logoo})`,borderRadius:"50%"}}></div>
           <p>ASTU STUDENT PREDENT SELCTION</p>
         </div>
       </div>
@@ -139,6 +140,7 @@ export default function Vote() {
           />
         ))}
       </div>
+      <Footer/>
     </div>
   );
 }
